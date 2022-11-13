@@ -5,39 +5,57 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Songbird</title>
+  <link rel="stylesheet" href="./styles/style.css">
+  <script src="./scripts/index.js"></script>
 </head>
 <body>
   <header class="header">
-    <div class="logo">Songbird</div>
-    <nav class="nav">
-      <ul class="nav__list">
-        <li class="nav__item">Start page</li>
-        <li class="nav__item">Questionnaire</li>
-      </ul>
-    </nav>
-    <div class="birds-types">
-      <ul calss="birds-types__list">
-        <li class="birds-types__item">Practice</li>
-        <li class="birds-types__item">Old World sparrows</li>
-        <li class="birds-types__item">Forest birds</li>
-        <li class="birds-types__item">Song birds</li>
-        <li class="birds-types__item">Predator birds</li>
-        <li class="birds-types__item">Sea birds</li>
-      </ul>
+    <div class="content-wrapper_header">
+      <div class="logo">Songbird</div>
+      <nav class="nav">
+        <ul class="nav__list list_unmarked">
+          <li class="nav__item">Start page</li>
+          <li class="nav__item">Questionnaire</li>
+        </ul>
+      </nav>
+      <div class="birds-types">
+        <ul class="birds-types__list list_unmarked">
+          <li class="birds-types__item">Practice</li>
+          <li class="birds-types__item">Old World sparrows</li>
+          <li class="birds-types__item">Forest birds</li>
+          <li class="birds-types__item">Song birds</li>
+          <li class="birds-types__item">Predator birds</li>
+          <li class="birds-types__item">Sea birds</li>
+        </ul>
+      </div>
+      <div class="score">0</div>
     </div>
-    <div class="score">0</div>
   </header>
   <main class="main">
-    <section class="mystery-bird">
-      <div class="audio-player"></div>
-    </section>
-    <section class="answers"></section>
-    <section class="bird-info"></section>
-    <section class="results"></section>
-    <div>
-      <button class="button-next button"></button>
+    <div class="content-wrapper">
+      <section class="mystery-bird">
+        <div class="audio-player"></div>
+      </section>
+      <section class="answers"></section>
+      <section class="bird-info"></section>
+      <section class="results"></section>
+      <div>
+        <button class="button-next button"></button>
+      </div>
     </div>
   </main>
-  <footer class="footer"></footer>
+  <footer class="footer">
+    <div class="content-wrapper">
+      <ul class="social-list list_unmarked">
+        <li class="social-list__item"><a href="https://github.com/VaultDweller13">Github</a></li>
+        <li class="social-list__item">2022</li>
+        <li class="social-list__item">
+          <a href="https://rs.school/js/">
+            <img src="./assets/images/rsschool-logo.svg" alt="Rolling Scopes School logo">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
 </body>
 </html>
