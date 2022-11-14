@@ -1,3 +1,14 @@
+body {
+  // display: flex;
+  // flex-direction: column;
+  background-color: $color-background;
+}
+
 .list_unmarked {
   list-style: none;
+
+  &_flat {
+    @extend .list_unmarked;
+    display: flex;
+  }
 }

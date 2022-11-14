@@ -1,0 +1,10 @@
+.bird-types {
+  &__item {
+    padding: 5px 10px;
+  }
+
+  &__item:hover {
+    background-color: $color-background;
+    cursor: pointer;
+  }
+}

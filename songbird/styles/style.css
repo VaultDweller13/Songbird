@@ -1,5 +1,12 @@
-.list_unmarked {
+body {
+  background-color: #ebebeb;
+}
+
+.list_unmarked, .list_unmarked_flat {
   list-style: none;
+}
+.list_unmarked_flat {
+  display: flex;
 }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -314,9 +321,45 @@ template {
 .content-wrapper, .content-wrapper_header {
   max-width: 1440px;
   margin: 0 auto;
+  background-color: #ffffff;
 }
 .content-wrapper_header {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  align-items: center;
+}
+.content-wrapper .logo, .content-wrapper_header .logo {
+  grid-column: 1/2;
+}
+.content-wrapper .nav, .content-wrapper_header .nav {
+  grid-column: 2/3;
+}
+.content-wrapper .score, .content-wrapper_header .score {
+  grid-column: 1/4;
+  grid-row: 2/3;
+  justify-self: center;
+}
+.content-wrapper .bird-types, .content-wrapper_header .bird-types {
+  grid-column: 1/4;
+  grid-row: 3/4;
+  justify-self: center;
+}
+
+.bird-types__item {
+  padding: 5px 10px;
+}
+.bird-types__item:hover {
+  background-color: #ebebeb;
+  cursor: pointer;
+}
+
+.nav__item {
+  padding: 5px 10px;
+}
+.nav__item:hover {
+  background-color: #ebebeb;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */
