@@ -1,6 +1,8 @@
 .content-wrapper {
+  width: 80%;
   max-width: 1440px;
   margin: 0 auto;
+  padding: 10px;
   background-color: $color-content;
 
   &_header {

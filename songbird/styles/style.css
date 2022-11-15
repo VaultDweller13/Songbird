@@ -319,8 +319,10 @@ template {
 }
 
 .content-wrapper, .content-wrapper_header {
+  width: 80%;
   max-width: 1440px;
   margin: 0 auto;
+  padding: 10px;
   background-color: #ffffff;
 }
 .content-wrapper_header {
@@ -352,6 +354,15 @@ template {
 .bird-types__item:hover {
   background-color: #ebebeb;
   cursor: pointer;
+}
+
+.mystery-bird {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 1fr;
+}
+.mystery-bird .mystery-bird__image {
+  grid-row: 1/3;
 }
 
 .nav__item {

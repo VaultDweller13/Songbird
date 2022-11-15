@@ -1,0 +1,10 @@
+.mystery-bird {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 1fr;
+
+  .mystery-bird__image {
+    grid-row: 1 / 3;
+  }
+
+}
