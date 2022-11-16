@@ -1,53 +1,57 @@
 import birdsData from './birds.js';
+import AnswersList from './answers.js';
+import MysteryBlock from './mystery.js';
 
 export default class Game {
   constructor() {
-    this.answersBlock = document.querySelector('.answers-block');
-    this.nameBlock = document.querySelector('.mystery-bird__name');
-    this.currentCategory = birdsData[0];
+    this.scoreBlock = document.querySelector('.score-value');
+    this.nextButton = document.querySelector('.button-next');
+    this.currentCategory = 0;
+    this.answersList = new AnswersList();
+    this.mysteryBlock = new MysteryBlock();
+    this.mysteryBird = null;
+    this.currentQuestionScore = 5;
+    this.score = 0;
   }
 
-  createAnswersList() {
-    const listSize = birdsData[0].length;
-    const list = document.createElement('ul');
-  
-    for(let i = 0; i < listSize; i++) {
-      const item = document.createElement('li');
-      item.classList.add(`answer`);
-      list.append(item);
-    }
-  
-    this.answersBlock.append(list);
+  updateScore(score) {
+    this.score += score;
+    this.currentQuestionScore = 5;
+    this.scoreBlock.textContent = this.score;
   }
-  
-  populateAnswersList(birdCategory) {
-    const listItems = this.answersBlock.querySelectorAll('.answer');
-  
-    listItems.forEach((item, index) => item.textContent = birdCategory[index].name);
+
+  setListener() {
+    this.answersList.list.addEventListener('click', (e) => {
+      const answer = e.target;
+      let highlightClass = 'answer_incorrect';
+
+      if (answer.classList.contains('answer')) {
+        if (answer.textContent === this.mysteryBlock.mysteryBird.name) {
+          highlightClass = 'answer_correct';
+          this.updateScore(this.currentQuestionScore);
+
+          if (this.currentCategory < birdsData.length - 1) this.nextButton.removeAttribute('disabled');
+        } else this.currentQuestionScore--;
+
+        answer.classList.add(highlightClass)
+      }
+    });
+
+    this.nextButton.addEventListener('click', () => {
+      this.currentCategory++;
+      
+      const data = birdsData[this.currentCategory];
+      this.answersList.init(data);
+      this.answersList.clearStyles();
+      this.mysteryBlock.populate(data);
+      this.nextButton.setAttribute('disabled', '');
+    });
   }
-  
-  getMysteryBird(birdCategory) {
-    const num = Math.floor(Math.random() * birdCategory.length);
-    return birdCategory[num];
-  }
-  
-  populateMysteryBlock(birdCategory) {
-    const mysteryBird = this.getMysteryBird(birdCategory);
-    this.nameBlock.textContent = mysteryBird.name;
-    this.createAudioPlayer(mysteryBird);
-  }
-  
-  createAudioPlayer(bird) {
-    const audioBlock = document.querySelector('.audio-player');
-    const player = new Audio(bird.audio);
-    player.setAttribute('controls', '');
-  
-    audioBlock.append(player);
-  }
-  
+
   start() {
-    this.createAnswersList();
-    this.populateMysteryBlock(this.currentCategory)
-    this.populateAnswersList(this.currentCategory);
+    const data = birdsData[this.currentCategory];
+    this.mysteryBlock.populate(data)
+    this.answersList.init(data);
+    this.setListener();
   }
 }

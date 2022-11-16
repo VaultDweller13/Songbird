@@ -1,0 +1,16 @@
+.answer {
+  // background-color: green;
+
+  &_correct {
+    background-color: green;
+  }
+
+  &_incorrect {
+    background-color: red;
+  }
+
+  &:hover {
+    // background-color: $color-background;
+    cursor: pointer;
+  }
+}

@@ -348,6 +348,16 @@ template {
   justify-self: center;
 }
 
+.answer_correct {
+  background-color: green;
+}
+.answer_incorrect {
+  background-color: red;
+}
+.answer:hover {
+  cursor: pointer;
+}
+
 .bird-types__item {
   padding: 5px 10px;
 }
