@@ -9,6 +9,10 @@ body {
   display: flex;
 }
 
+.hidden {
+  display: none;
+}
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -318,7 +322,7 @@ template {
   display: none;
 }
 
-.content-wrapper, .content-wrapper_header {
+.content-wrapper, .content-wrapper_main, .content-wrapper_header {
   width: 80%;
   max-width: 1440px;
   margin: 0 auto;
@@ -331,18 +335,18 @@ template {
   grid-template-rows: 1fr 1fr 1fr;
   align-items: center;
 }
-.content-wrapper .logo, .content-wrapper_header .logo {
+.content-wrapper .logo, .content-wrapper_header .logo, .content-wrapper_main .logo {
   grid-column: 1/2;
 }
-.content-wrapper .nav, .content-wrapper_header .nav {
+.content-wrapper .nav, .content-wrapper_header .nav, .content-wrapper_main .nav {
   grid-column: 2/3;
 }
-.content-wrapper .score, .content-wrapper_header .score {
+.content-wrapper .score, .content-wrapper_header .score, .content-wrapper_main .score {
   grid-column: 1/4;
   grid-row: 2/3;
   justify-self: center;
 }
-.content-wrapper .bird-types, .content-wrapper_header .bird-types {
+.content-wrapper .bird-types, .content-wrapper_header .bird-types, .content-wrapper_main .bird-types {
   grid-column: 1/4;
   grid-row: 3/4;
   justify-self: center;

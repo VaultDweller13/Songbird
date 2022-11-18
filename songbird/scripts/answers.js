@@ -34,6 +34,7 @@ export default class AnswersList {
     this.size = data.length;
 
     this.create();
+    this.clearStyles();
     this.populate();
   }
 }

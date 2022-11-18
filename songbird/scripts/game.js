@@ -4,54 +4,100 @@ import MysteryBlock from './mystery.js';
 
 export default class Game {
   constructor() {
-    this.scoreBlock = document.querySelector('.score-value');
+    this.mainContent = document.querySelector('.content-wrapper_main');
+    this.scoreBlocks = document.querySelectorAll('.score-value');
+    this.resultsBlock = document.querySelector('.results');
+    this.birdInfoBlock = document.querySelector('.bird-info');
     this.nextButton = document.querySelector('.button-next');
+    this.restartButton = document.querySelector('.restart');
     this.currentCategory = 0;
     this.answersList = new AnswersList();
     this.mysteryBlock = new MysteryBlock();
     this.mysteryBird = null;
     this.currentQuestionScore = 5;
     this.score = 0;
+    this.maxScore = birdsData.length * 5;
   }
 
   updateScore(score) {
     this.score += score;
     this.currentQuestionScore = 5;
-    this.scoreBlock.textContent = this.score;
+    this.scoreBlocks.forEach(block => {
+      block.textContent = this.score;
+    });
   }
 
   setListener() {
+    // Clicking on answer
     this.answersList.list.addEventListener('click', (e) => {
       const answer = e.target;
+      const isAnswered = document.querySelector('.answer_correct');
       let highlightClass = 'answer_incorrect';
 
-      if (answer.classList.contains('answer')) {
+      if (answer.classList.contains('answer') && !isAnswered) {
         if (answer.textContent === this.mysteryBlock.mysteryBird.name) {
           highlightClass = 'answer_correct';
           this.updateScore(this.currentQuestionScore);
 
-          if (this.currentCategory < birdsData.length - 1) this.nextButton.removeAttribute('disabled');
-        } else this.currentQuestionScore--;
+          this.nextButton.removeAttribute('disabled');
+        } else if(!answer.classList.contains('answer_incorrect')) { 
+          this.currentQuestionScore--;
+        }
 
-        answer.classList.add(highlightClass)
+        answer.classList.add(highlightClass);
       }
     });
 
+    // Clicking 'Next' button
     this.nextButton.addEventListener('click', () => {
-      this.currentCategory++;
-      
-      const data = birdsData[this.currentCategory];
-      this.answersList.init(data);
-      this.answersList.clearStyles();
-      this.mysteryBlock.populate(data);
-      this.nextButton.setAttribute('disabled', '');
+      const notLastCategory = this.currentCategory < birdsData.length - 1;
+
+      if (notLastCategory) {
+        this.currentCategory++;
+        
+        const data = birdsData[this.currentCategory];
+
+        this.answersList.init(data);
+        this.mysteryBlock.populate(data);
+        this.nextButton.setAttribute('disabled', '');
+      } else {
+        this.toggleResult();
+      }
     });
+
+    // Clicking 'Try again button'
+    this.restartButton.addEventListener('click', () => {
+      this.toggleResult();
+      this.init();
+    })
   }
 
-  start() {
+  toggleResult() {
+    const maxScoreBlock = document.querySelector('.results__text_max');
+    const baseScoreBlock = document.querySelector('.results__text_base');
+
+    Array.from(this.mainContent.children).forEach(child => {
+      child.classList.toggle('hidden');
+    });
+
+    if (this.score === this.maxScore) {
+      maxScoreBlock.classList.toggle('hidden');
+    } else {
+      baseScoreBlock.classList.toggle('hidden');
+    }
+  }
+
+  init() {
+    this.score = 0;
+    this.updateScore(0);
+    this.currentCategory = 0;
     const data = birdsData[this.currentCategory];
     this.mysteryBlock.populate(data)
     this.answersList.init(data);
+  }
+
+  start() {
+    this.init()
     this.setListener();
   }
 }
