@@ -335,21 +335,28 @@ template {
   grid-template-rows: 1fr 1fr 1fr;
   align-items: center;
 }
-.content-wrapper .logo, .content-wrapper_header .logo, .content-wrapper_main .logo {
+.content-wrapper_header .logo {
   grid-column: 1/2;
 }
-.content-wrapper .nav, .content-wrapper_header .nav, .content-wrapper_main .nav {
+.content-wrapper_header .nav {
   grid-column: 2/3;
 }
-.content-wrapper .score, .content-wrapper_header .score, .content-wrapper_main .score {
+.content-wrapper_header .score {
   grid-column: 1/4;
   grid-row: 2/3;
   justify-self: center;
 }
-.content-wrapper .bird-types, .content-wrapper_header .bird-types, .content-wrapper_main .bird-types {
+.content-wrapper_header .bird-types {
   grid-column: 1/4;
   grid-row: 3/4;
   justify-self: center;
+}
+.content-wrapper_main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.content-wrapper_main .mystery-bird {
+  grid-column: 1/3;
 }
 
 .answer_correct {

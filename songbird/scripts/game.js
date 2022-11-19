@@ -1,6 +1,7 @@
 import birdsData from './birds.js';
 import AnswersList from './answers.js';
 import MysteryBlock from './mystery.js';
+import BirdInfo from './birdInfo.js';
 
 export default class Game {
   constructor() {
@@ -13,6 +14,7 @@ export default class Game {
     this.currentCategory = 0;
     this.answersList = new AnswersList();
     this.mysteryBlock = new MysteryBlock();
+    this.birdInfo = new BirdInfo();
     this.mysteryBird = null;
     this.currentQuestionScore = 5;
     this.score = 0;
@@ -45,6 +47,8 @@ export default class Game {
         }
 
         answer.classList.add(highlightClass);
+        this.birdInfo.populate(this.getPickedBird(answer.textContent));
+        this.birdInfo.show();
       }
     });
 
@@ -60,6 +64,8 @@ export default class Game {
         this.answersList.init(data);
         this.mysteryBlock.populate(data);
         this.nextButton.setAttribute('disabled', '');
+        this.birdInfo.hide();
+
       } else {
         this.toggleResult();
       }
@@ -70,6 +76,12 @@ export default class Game {
       this.toggleResult();
       this.init();
     })
+  }
+
+  getPickedBird(name) {
+    const currentFamily = birdsData[this.currentCategory];
+
+    return currentFamily.find(item => item.name === name);
   }
 
   toggleResult() {
@@ -94,6 +106,7 @@ export default class Game {
     const data = birdsData[this.currentCategory];
     this.mysteryBlock.populate(data)
     this.answersList.init(data);
+    this.birdInfo.hide();
   }
 
   start() {
