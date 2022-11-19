@@ -7,10 +7,13 @@
 
 @import 'layout/header';
 @import 'layout/wrappers';
+@import 'layout/main';
 @import 'layout/results';
+@import 'layout/footer';
 
 @import 'components/answers';
 @import 'components/bird-types';
+@import 'components/bird-info';
 @import 'components/buttons';
 @import 'components/mystery-bird';
 @import 'components/navigation';

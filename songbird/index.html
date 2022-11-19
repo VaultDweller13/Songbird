@@ -11,7 +11,7 @@
   <body>
     <header class="header">
       <div class="content-wrapper_header">
-        <div class="logo">Songbird</div>
+        <h1 class="logo">Songbird</h1>
         <nav class="nav">
           <ul class="nav__list list_unmarked_flat">
             <li class="nav__item">Start page</li>
@@ -37,7 +37,7 @@
           <div class="mystery-bird__image">
             <img src="./assets/images/mystery-bird.jpg" alt="Some unidentified bird" width="200" height="155">
           </div>
-          <div class="mystery-bird__name"></div>
+          <h2 class="mystery-bird__name"></h2>
           <div class="audio-player"></div>
         </section>
         <section class="answers-block"></section>
@@ -47,7 +47,9 @@
         <div>
           <button class="button-next button" disabled>Next category</button>
         </div>
-        <section class="results hidden">
+      </div>
+      <div class="content-wrapper_results hidden">
+        <section class="results">
           <div class="results__score"> Score: <span class="score-value">0</span></div>
           <p class="results__text_max hidden">Congratulations! You got maximum score! Game is ended.</p>
           <p class="results__text_base hidden">You're doing great!</p>
@@ -56,13 +58,13 @@
       </div>
     </main>
     <footer class="footer">
-      <div class="content-wrapper">
+      <div class="content-wrapper_footer">
         <ul class="social-list list_unmarked_flat">
           <li class="social-list__item"><a href="https://github.com/VaultDweller13">Github</a></li>
           <li class="social-list__item">2022</li>
           <li class="social-list__item">
             <a href="https://rs.school/js/">
-              <img src="./assets/images/rsschool-logo.svg" alt="Rolling Scopes School logo">
+              <img class="rs-logo" src="./assets/images/rsschool-logo.svg" alt="Rolling Scopes School logo">
             </a>
           </li>
         </ul>

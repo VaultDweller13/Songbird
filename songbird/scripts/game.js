@@ -7,8 +7,10 @@ export default class Game {
   constructor() {
     this.mainContent = document.querySelector('.content-wrapper_main');
     this.scoreBlocks = document.querySelectorAll('.score-value');
-    this.resultsBlock = document.querySelector('.results');
+    this.resultsBlock = document.querySelector('.content-wrapper_results');
     this.birdInfoBlock = document.querySelector('.bird-info');
+    this.mysteryBirdBlock = document.querySelector('.mystery-bird')
+    this.answersListBlock = document.querySelector('.answers-block')
     this.nextButton = document.querySelector('.button-next');
     this.restartButton = document.querySelector('.restart');
     this.currentCategory = 0;
@@ -64,11 +66,12 @@ export default class Game {
         this.answersList.init(data);
         this.mysteryBlock.populate(data);
         this.nextButton.setAttribute('disabled', '');
-        this.birdInfo.hide();
 
       } else {
         this.toggleResult();
       }
+
+      this.birdInfo.hide();
     });
 
     // Clicking 'Try again button'
@@ -88,9 +91,8 @@ export default class Game {
     const maxScoreBlock = document.querySelector('.results__text_max');
     const baseScoreBlock = document.querySelector('.results__text_base');
 
-    Array.from(this.mainContent.children).forEach(child => {
-      child.classList.toggle('hidden');
-    });
+    this.mainContent.classList.toggle('hidden');
+    this.resultsBlock.classList.toggle('hidden');
 
     if (this.score === this.maxScore) {
       maxScoreBlock.classList.toggle('hidden');

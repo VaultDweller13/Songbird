@@ -1,18 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  // display: flex;
-  // flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   background-color: $color-background;
+
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
 }
 
 .list_unmarked {
+  margin: 0;
+  padding: 0;
   list-style: none;
 
   &_flat {
     @extend .list_unmarked;
     display: flex;
   }
-}
-
-.hidden {
-  display: none;
 }
