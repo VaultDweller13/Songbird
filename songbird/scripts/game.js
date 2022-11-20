@@ -5,6 +5,8 @@ import BirdInfo from './birdInfo.js';
 
 export default class Game {
   constructor() {
+    this.startPage = document.querySelector('.content-wrapper_start-page');
+    this.topPanel = document.querySelector('.content-wrapper_top-panel');
     this.mainContent = document.querySelector('.content-wrapper_main');
     this.scoreBlocks = document.querySelectorAll('.score-value');
     this.resultsBlock = document.querySelector('.content-wrapper_results');
@@ -12,7 +14,10 @@ export default class Game {
     this.mysteryBirdBlock = document.querySelector('.mystery-bird')
     this.answersListBlock = document.querySelector('.answers-block')
     this.nextButton = document.querySelector('.button-next');
-    this.restartButton = document.querySelector('.restart');
+    this.startButton = document.querySelector('.button-start');
+    this.restartButton = document.querySelector('.button-restart');
+    this.navStartButton = document.querySelector('.nav__start');
+    this.navQuizButton = document.querySelector('.nav__quiz');
     this.currentCategory = 0;
     this.answersList = new AnswersList();
     this.mysteryBlock = new MysteryBlock();
@@ -32,6 +37,18 @@ export default class Game {
   }
 
   setListener() {
+    // Clicking 'Quiz page' nav button
+    this.navQuizButton.addEventListener('click', () => this.showQuizPage());
+
+    // Clicking 'Start page' nav button
+    this.navStartButton.addEventListener('click', () => this.showStartPage());
+
+    // Clicking 'Start' button 
+    this.startButton.addEventListener('click', () => {
+      this.init();
+      this.showQuizPage();
+    });
+
     // Clicking on answer
     this.answersList.list.addEventListener('click', (e) => {
       const answer = e.target;
@@ -78,7 +95,7 @@ export default class Game {
     this.restartButton.addEventListener('click', () => {
       this.toggleResult();
       this.init();
-    })
+    });
   }
 
   getPickedBird(name) {
@@ -99,6 +116,20 @@ export default class Game {
     } else {
       baseScoreBlock.classList.toggle('hidden');
     }
+  }
+
+  showStartPage() {
+    this.topPanel.classList.add('hidden');
+    this.mainContent.classList.add('hidden');
+    this.startPage.classList.remove('hidden');
+    this.resultsBlock.classList.add('hidden');
+  }
+
+  showQuizPage() {
+    this.topPanel.classList.remove('hidden');
+    this.mainContent.classList.remove('hidden');
+    this.startPage.classList.add('hidden');
+    this.resultsBlock.classList.add('hidden');
   }
 
   init() {

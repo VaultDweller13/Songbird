@@ -3,5 +3,11 @@
     margin: 0;
   }
 
+  .nav {
+    &__item:hover {
+      background-color: $color-active;
+      transition: 0.2s ease-in;
+    }
+  }
 
 }

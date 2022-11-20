@@ -1,2 +1,18 @@
-button-next {
+.button {
+  border: none;
+  border-radius: 5px;
+  padding: 15px 20px;
+  cursor: pointer;
 }
+
+.button-start_active {
+  @extend .button;
+  background-color: $color-active;
+  color: $color-content;
+
+  &:hover {
+    background-color: adjust-color($color: $color-active, $hue: 0, $saturation: 0%, $lightness: -10%, $alpha: 1.0);
+    transition: 0.2s ease-in;
+  }
+}
+

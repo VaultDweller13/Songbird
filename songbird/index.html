@@ -11,13 +11,21 @@
   <body>
     <header class="header">
       <div class="content-wrapper_header">
-        <h1 class="logo">Songbird</h1>
+        <p class="logo">Songbird</p>
         <nav class="nav">
           <ul class="nav__list list_unmarked_flat">
-            <li class="nav__item">Start page</li>
-            <li class="nav__item">Questionnaire</li>
+            <li class="nav__item nav__start">Начальная страница</li>
+            <li class="nav__item nav__quiz">Викторина</li>
           </ul>
         </nav>
+      </div>
+    </header>
+    <main class="main">
+      <div class="content-wrapper_start-page">
+        <h1>Викторина Songbird</h1>
+        <button class="button-start button-start_active">Начать игру</button>
+      </div>
+      <div class="content-wrapper_top-panel hidden">
         <div class="bird-types">
           <ul class="bird-types__list list_unmarked_flat">
             <li class="bird-types__item">Practice</li>
@@ -30,9 +38,7 @@
         </div>
         <div class="score"> Score: <span class="score-value">0</span></div>
       </div>
-    </header>
-    <main class="main">
-      <div class="content-wrapper_main">
+      <div class="content-wrapper_main hidden">
         <section class="mystery-bird">
           <div class="mystery-bird__image">
             <img src="./assets/images/mystery-bird.jpg" alt="Some unidentified bird" width="200" height="155">
@@ -45,7 +51,7 @@
           <p class="bird-info__text-default">Послушайте плеер. Выберите птицу из списка</p>
         </section>
         <div>
-          <button class="button-next button" disabled>Next category</button>
+          <button class="button-next" disabled>Next category</button>
         </div>
       </div>
       <div class="content-wrapper_results hidden">
@@ -53,7 +59,7 @@
           <div class="results__score"> Score: <span class="score-value">0</span></div>
           <p class="results__text_max hidden">Congratulations! You got maximum score! Game is ended.</p>
           <p class="results__text_base hidden">You're doing great!</p>
-          <button class="button restart">Try again?</button>
+          <button class="button-restart">Try again?</button>
         </section>
       </div>
     </main>
