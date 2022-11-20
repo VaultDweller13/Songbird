@@ -1,19 +1,29 @@
 .answer {
-  // background-color: green;
+  position: relative;
   padding: 15px 0;
   border-bottom: 1px solid #c7c7c7;
+  display: flex;
+  align-items: center;
 
+  &::before {
+    content: '';
+    width: calc($font-size-default / 2);
+    height: calc($font-size-default / 2);
+    border-radius: 50%;
+    background-color: $color-background;
+    margin-right: 5px;
+  }
 
-  &_correct {
+  &_correct::before {
     background-color: green;
   }
 
-  &_incorrect {
+  &_incorrect::before  {
     background-color: red;
   }
 
   &:hover {
-    // background-color: $color-background;
+    background-color: $color-background;
     cursor: pointer;
   }
 }

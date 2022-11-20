@@ -431,16 +431,28 @@ template {
 }
 
 .answer {
+  position: relative;
   padding: 15px 0;
   border-bottom: 1px solid #c7c7c7;
+  display: flex;
+  align-items: center;
 }
-.answer_correct {
+.answer::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #ebebeb;
+  margin-right: 5px;
+}
+.answer_correct::before {
   background-color: green;
 }
-.answer_incorrect {
+.answer_incorrect::before {
   background-color: red;
 }
 .answer:hover {
+  background-color: #ebebeb;
   cursor: pointer;
 }
 

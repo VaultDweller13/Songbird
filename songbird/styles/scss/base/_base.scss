@@ -9,7 +9,7 @@ body {
   background-color: $color-background;
 
   font-family: 'Roboto', sans-serif;
-  font-size: 18px;
+  font-size: $font-size-default
 }
 
 .list_unmarked {
