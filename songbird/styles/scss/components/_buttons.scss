@@ -5,8 +5,7 @@
   cursor: pointer;
 }
 
-.button-start_active {
-  @extend .button;
+.button-active {
   background-color: $color-active;
   color: $color-content;
 
@@ -16,3 +15,16 @@
   }
 }
 
+.button-start,
+.button-next {
+  @extend .button;
+
+  &_active {
+    @extend .button-active;
+  }
+}
+
+.button-next {
+  justify-self: center;
+  align-self: start;
+}

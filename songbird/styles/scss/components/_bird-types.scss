@@ -3,8 +3,8 @@
     padding: 5px 10px;
   }
 
-  &__item:hover {
-    background-color: $color-background;
-    cursor: pointer;
+  .active {
+    background-color: $color-active;
+    transition: 0.2s ease-in;
   }
 }

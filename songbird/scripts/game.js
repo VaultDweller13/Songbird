@@ -13,6 +13,7 @@ export default class Game {
     this.birdInfoBlock = document.querySelector('.bird-info');
     this.mysteryBirdBlock = document.querySelector('.mystery-bird')
     this.answersListBlock = document.querySelector('.answers-block')
+    this.birdTypes = document.querySelectorAll('.bird-types__item');
     this.nextButton = document.querySelector('.button-next');
     this.startButton = document.querySelector('.button-start');
     this.restartButton = document.querySelector('.button-restart');
@@ -61,6 +62,8 @@ export default class Game {
           this.updateScore(this.currentQuestionScore);
 
           this.nextButton.removeAttribute('disabled');
+          this.nextButton.classList.add('button-next_active');
+
         } else if(!answer.classList.contains('answer_incorrect')) { 
           this.currentQuestionScore--;
         }
@@ -83,6 +86,8 @@ export default class Game {
         this.answersList.init(data);
         this.mysteryBlock.populate(data);
         this.nextButton.setAttribute('disabled', '');
+        this.nextButton.classList.remove('button-next_active');
+        this.higlightCurrentCategory();
 
       } else {
         this.toggleResult();
@@ -132,6 +137,11 @@ export default class Game {
     this.resultsBlock.classList.add('hidden');
   }
 
+  higlightCurrentCategory() {
+    this.birdTypes.forEach(type => type.classList.remove('active'));
+    this.birdTypes[this.currentCategory].classList.add('active');
+  }
+
   init() {
     this.score = 0;
     this.updateScore(0);
@@ -140,6 +150,8 @@ export default class Game {
     this.mysteryBlock.populate(data)
     this.answersList.init(data);
     this.birdInfo.hide();
+    this.nextButton.setAttribute('disabled', '');
+    this.higlightCurrentCategory();
   }
 
   start() {

@@ -24,11 +24,23 @@
 
   &_top-panel {
     @extend .content-wrapper;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    .score {
+      padding: 5px 10px;
+    }
 
     .bird-types {
-      grid-column: 1 / 4;
-      grid-row: 3 / 4;
-      justify-self: center;
+      &__list {
+        justify-content: center;
+      }
+
+      &__item {
+        padding: 5px 10px;
+      }
     }
   }
 
@@ -36,6 +48,7 @@
     @extend .content-wrapper;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, max-content);
     gap: 15px;
 
     height: 100%;

@@ -381,14 +381,25 @@ template {
   height: 100%;
   text-align: center;
 }
-.content-wrapper_top-panel .bird-types {
-  grid-column: 1/4;
-  grid-row: 3/4;
-  justify-self: center;
+.content-wrapper_top-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.content-wrapper_top-panel .score {
+  padding: 5px 10px;
+}
+.content-wrapper_top-panel .bird-types__list {
+  justify-content: center;
+}
+.content-wrapper_top-panel .bird-types__item {
+  padding: 5px 10px;
 }
 .content-wrapper_main {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, max-content);
   gap: 15px;
   height: 100%;
 }
@@ -436,9 +447,9 @@ template {
 .bird-types__item {
   padding: 5px 10px;
 }
-.bird-types__item:hover {
-  background-color: #ebebeb;
-  cursor: pointer;
+.bird-types .active {
+  background-color: #4fa159;
+  transition: 0.2s ease-in;
 }
 
 .bird-info {
@@ -476,20 +487,28 @@ template {
   margin: 0;
 }
 
-.button, .button-start_active {
+.button, .button-start,
+.button-next {
   border: none;
   border-radius: 5px;
   padding: 15px 20px;
   cursor: pointer;
 }
 
-.button-start_active {
+.button-active, .button-start_active,
+.button-next_active {
   background-color: #4fa159;
   color: #ffffff;
 }
-.button-start_active:hover {
+.button-active:hover, .button-start_active:hover,
+.button-next_active:hover {
   background-color: #3e7f46;
   transition: 0.2s ease-in;
+}
+
+.button-next {
+  justify-self: center;
+  align-self: start;
 }
 
 .mystery-bird {
