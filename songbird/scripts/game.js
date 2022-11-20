@@ -70,9 +70,11 @@ export default class Game {
         }
 
         answer.classList.add(highlightClass);
-        this.birdInfo.populate(this.getPickedBird(answer.textContent));
-        this.birdInfo.show();
+        // this.birdInfo.populate(this.getPickedBird(answer.textContent));
+        // this.birdInfo.show();
       }
+      this.birdInfo.populate(this.getPickedBird(answer.textContent));
+      this.birdInfo.show();
     });
 
     // Clicking 'Next' button
