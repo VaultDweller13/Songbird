@@ -58,6 +58,7 @@ export default class Game {
 
       if (answer.classList.contains('answer') && !isAnswered) {
         if (answer.textContent === this.mysteryBlock.mysteryBird.name) {
+          this.mysteryBlock.showName();
           highlightClass = 'answer_correct';
           this.updateScore(this.currentQuestionScore);
 

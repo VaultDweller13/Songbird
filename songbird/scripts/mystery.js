@@ -1,6 +1,7 @@
 export default class MysteryBlock {
   constructor() {
     this.nameBlock = document.querySelector('.mystery-bird__name');
+    this.image = document.querySelector('.mystery-bird__image');
   }
 
   getMysteryBird() {
@@ -11,9 +12,15 @@ export default class MysteryBlock {
   populate(data) {
     this.data = data;
 
+    this.image.src = './assets/images/mystery-bird.jpg';
     this.mysteryBird = this.getMysteryBird();
-    this.nameBlock.textContent = this.mysteryBird.name;
+    this.nameBlock.textContent = '***';
     this.createAudioPlayer();
+  }
+
+  showName() {
+    this.nameBlock.textContent = this.mysteryBird.name;
+    this.image.src = this.mysteryBird.image;
   }
 
   createAudioPlayer() {
