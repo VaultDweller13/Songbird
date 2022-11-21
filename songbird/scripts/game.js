@@ -27,6 +27,8 @@ export default class Game {
     this.currentQuestionScore = 5;
     this.score = 0;
     this.maxScore = birdsData.length * 5;
+    this.correctSound = new Audio('./assets/sounds/correct.wav');
+    this.wrongSound = new Audio('./assets/sounds/wrong.wav');
   }
 
   updateScore(score) {
@@ -58,6 +60,8 @@ export default class Game {
 
       if (answer.classList.contains('answer') && !isAnswered) {
         if (answer.textContent === this.mysteryBlock.mysteryBird.name) {
+          this.mysteryBlock.stopAudio();
+          this.correctSound.play();
           this.mysteryBlock.showName();
           highlightClass = 'answer_correct';
           this.updateScore(this.currentQuestionScore);
@@ -66,12 +70,12 @@ export default class Game {
           this.nextButton.classList.add('button-next_active');
 
         } else if(!answer.classList.contains('answer_incorrect')) { 
+          this.wrongSound.currentTime = 0;
+          this.wrongSound.play();
           this.currentQuestionScore--;
         }
 
         answer.classList.add(highlightClass);
-        // this.birdInfo.populate(this.getPickedBird(answer.textContent));
-        // this.birdInfo.show();
       }
       this.birdInfo.populate(this.getPickedBird(answer.textContent));
       this.birdInfo.show();

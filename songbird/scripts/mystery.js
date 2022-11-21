@@ -24,15 +24,20 @@ export default class MysteryBlock {
   }
 
   createAudioPlayer() {
-    const audio = document.querySelector('.audio');
+    this.audio = document.querySelector('.audio');
 
-    if (!audio) {
+    if (!this.audio) {
       const audioBlock = document.querySelector('.audio-player');
-      const player = new Audio(this.mysteryBird.audio);
-      player.setAttribute('controls', '');
-      player.classList.add('audio');
+      this.audio = new Audio(this.mysteryBird.audio);
+      this.audio.setAttribute('controls', '');
+      this.audio.classList.add('audio');
     
-      audioBlock.append(player);
-    } else audio.src = this.mysteryBird.audio;
+      audioBlock.append(this.audio);
+    } else this.audio.src = this.mysteryBird.audio;
+  }
+
+  stopAudio() {
+    this.audio.pause();
+    this.audio.currentTime = 0;
   }
 }
