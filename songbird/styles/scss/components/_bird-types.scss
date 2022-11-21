@@ -1,11 +1,14 @@
 .bird-types {
+  background-color: $color-background;
+
   &__item {
     padding: 5px 10px;
+    transition: 0.3s ease-out;
   }
 
   .active {
     background-color: $color-active;
     color: $color-content;
-    transition: 0.2s ease-in;
+    transition: 0.3s ease-out;
   }
 }

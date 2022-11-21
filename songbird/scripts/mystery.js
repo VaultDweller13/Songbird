@@ -1,3 +1,5 @@
+import AudioPlayer from "./audioPlayer.js";
+
 export default class MysteryBlock {
   constructor() {
     this.nameBlock = document.querySelector('.mystery-bird__name');
@@ -24,20 +26,12 @@ export default class MysteryBlock {
   }
 
   createAudioPlayer() {
-    this.audio = document.querySelector('.audio');
-
-    if (!this.audio) {
-      const audioBlock = document.querySelector('.audio-player');
-      this.audio = new Audio(this.mysteryBird.audio);
-      this.audio.setAttribute('controls', '');
-      this.audio.classList.add('audio');
-    
-      audioBlock.append(this.audio);
-    } else this.audio.src = this.mysteryBird.audio;
+    const parent = document.querySelector('.mystery-bird__audio');
+    if (!this.audioPlayer) this.audioPlayer = new AudioPlayer(parent);
+    this.audioPlayer.init(this.mysteryBird.audio);
   }
 
   stopAudio() {
-    this.audio.pause();
-    this.audio.currentTime = 0;
+    this.audioPlayer.stop();
   }
 }

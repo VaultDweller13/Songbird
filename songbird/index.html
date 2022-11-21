@@ -29,12 +29,12 @@
         <div class="score"> Score: <span class="score-value">0</span></div>
         <div class="bird-types">
           <ul class="bird-types__list list_unmarked_flat">
-            <li class="bird-types__item">Practice</li>
-            <li class="bird-types__item">Old World sparrows</li>
-            <li class="bird-types__item">Forest birds</li>
-            <li class="bird-types__item">Song birds</li>
-            <li class="bird-types__item">Predator birds</li>
-            <li class="bird-types__item">Sea birds</li>
+            <li class="bird-types__item">Разминка</li>
+            <li class="bird-types__item">Воробьиные</li>
+            <li class="bird-types__item">Лесные птицы</li>
+            <li class="bird-types__item">Певчие птицы</li>
+            <li class="bird-types__item">Хищные птицы</li>
+            <li class="bird-types__item">Морские птицы</li>
           </ul>
         </div>
       </div>
@@ -42,20 +42,29 @@
         <section class="mystery-bird">
           <img class="mystery-bird__image" src="./assets/images/mystery-bird.jpg" alt="Some unidentified bird" width="200" height="155">
           <h2 class="mystery-bird__name"></h2>
-          <div class="audio-player"></div>
+          <div class="mystery-bird__audio">
+            <img class="controls" src="./assets/images/play.svg" alt="Play/Pause button" width="48" height="48">
+            <div class="progress-bar-wrapper">
+              <div class="progress-bar">
+                <div class="progress-bar__filler"></div>
+              </div>
+              <span class="current-time"></span>
+              <span class="duration"></span>
+            </div>
+          </div>
         </section>
         <section class="answers-block"></section>
         <section class="bird-info">
           <p class="bird-info__text-default">Послушайте плеер. Выберите птицу из списка</p>
         </section>
-        <button class="button-next" disabled>Next category</button>
+        <button class="button-next" disabled>Следующий вопрос</button>
       </div>
       <div class="content-wrapper_results hidden">
         <section class="results">
           <!-- <div class="results__score"> Score: <span class="score-value">0</span></div> -->
-          <p class="results__text_max hidden">Congratulations! You got maximum score! Game is ended.</p>
+          <p class="results__text_max hidden">Поздравляем! Вы прошли викторину и набрали максимальный балл! Игра окончена.</p>
           <p class="results__text_base hidden">Поздравляем! Вы прошли викторину и набрали <span class="score-value"></span> из <span class="score-max"></span> возможных баллов!</p>
-          <button class="button-restart">Try again?</button>
+          <button class="button-restart">Попробовать еще раз?</button>
         </section>
       </div>
     </main>

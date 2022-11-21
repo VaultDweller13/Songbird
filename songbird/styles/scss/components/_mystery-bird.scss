@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: max-content 1fr;
   grid-template-rows: repeat(2, max-content);
-  gap: 30px;
+  column-gap: 30px;
 
   .mystery-bird__image {
     display: block;
@@ -12,6 +12,12 @@
 
   .mystery-bird__name {
     margin: 0;
+  }
+
+  .mystery-bird__audio {
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
 }

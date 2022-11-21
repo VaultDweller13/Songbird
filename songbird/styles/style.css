@@ -479,13 +479,17 @@ template {
   cursor: pointer;
 }
 
+.bird-types {
+  background-color: #ebebeb;
+}
 .bird-types__item {
   padding: 5px 10px;
+  transition: 0.3s ease-out;
 }
 .bird-types .active {
   background-color: #4fa159;
   color: #ffffff;
-  transition: 0.2s ease-in;
+  transition: 0.3s ease-out;
 }
 
 .bird-info {
@@ -551,7 +555,7 @@ template {
   display: grid;
   grid-template-columns: max-content 1fr;
   grid-template-rows: repeat(2, max-content);
-  gap: 30px;
+  column-gap: 30px;
 }
 .mystery-bird .mystery-bird__image {
   display: block;
@@ -560,6 +564,24 @@ template {
 }
 .mystery-bird .mystery-bird__name {
   margin: 0;
+}
+.mystery-bird .mystery-bird__audio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-bar-wrapper {
+  width: 100%;
+}
+.progress-bar-wrapper .progress-bar {
+  width: 70%;
+  height: 5px;
+  border-radius: 5px;
+  background-color: #ebebeb;
+}
+.progress-bar-wrapper .progress-bar__filler {
+  background-color: #4fa159;
 }
 
 .nav__item {
