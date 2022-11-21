@@ -1,12 +1,17 @@
 .mystery-bird {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: max-content 1fr;
+  grid-template-rows: repeat(2, max-content);
+  gap: 30px;
 
   .mystery-bird__image {
     display: block;
     grid-row: 1 / 3;
     object-fit: cover;
+  }
+
+  .mystery-bird__name {
+    margin: 0;
   }
 
 }

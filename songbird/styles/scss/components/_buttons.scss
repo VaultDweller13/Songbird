@@ -28,3 +28,8 @@
   justify-self: center;
   align-self: start;
 }
+
+.button-restart {
+  @extend .button;
+  @extend .button-active;
+}

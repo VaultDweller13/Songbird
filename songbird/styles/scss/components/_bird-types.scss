@@ -5,6 +5,7 @@
 
   .active {
     background-color: $color-active;
+    color: $color-content;
     transition: 0.2s ease-in;
   }
 }

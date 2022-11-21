@@ -9,7 +9,15 @@ body {
   background-color: $color-background;
 
   font-family: 'Roboto', sans-serif;
-  font-size: $font-size-default
+  font-size: $font-size-default;
+
+  @media screen and (max-width: 1024px) {
+    font-size: $font-size-medium;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: $font-size-small;
+  }
 }
 
 .list_unmarked {

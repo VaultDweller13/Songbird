@@ -9,6 +9,7 @@ export default class Game {
     this.topPanel = document.querySelector('.content-wrapper_top-panel');
     this.mainContent = document.querySelector('.content-wrapper_main');
     this.scoreBlocks = document.querySelectorAll('.score-value');
+    this.maxScoreBlock = document.querySelector('.score-max');
     this.resultsBlock = document.querySelector('.content-wrapper_results');
     this.birdInfoBlock = document.querySelector('.bird-info');
     this.mysteryBirdBlock = document.querySelector('.mystery-bird')
@@ -34,6 +35,7 @@ export default class Game {
   updateScore(score) {
     this.score += score;
     this.currentQuestionScore = 5;
+    this.maxScoreBlock.textContent = this.maxScore;
     this.scoreBlocks.forEach(block => {
       block.textContent = this.score;
     });
@@ -158,6 +160,7 @@ export default class Game {
     this.answersList.init(data);
     this.birdInfo.hide();
     this.nextButton.setAttribute('disabled', '');
+    this.nextButton.classList.remove('button-next_active');
     this.higlightCurrentCategory();
   }
 

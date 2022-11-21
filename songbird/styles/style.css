@@ -10,6 +10,16 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 18px;
 }
+@media screen and (max-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
 
 .list_unmarked, .list_unmarked_flat {
   margin: 0;
@@ -374,8 +384,14 @@ template {
 }
 .content-wrapper_header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .content-wrapper_header {
+    justify-content: center;
+  }
 }
 .content-wrapper_start-page {
   height: 100%;
@@ -391,6 +407,7 @@ template {
   padding: 5px 10px;
 }
 .content-wrapper_top-panel .bird-types__list {
+  flex-wrap: wrap;
   justify-content: center;
 }
 .content-wrapper_top-panel .bird-types__item {
@@ -405,6 +422,12 @@ template {
 }
 .content-wrapper_main .mystery-bird {
   grid-column: 1/3;
+}
+@media screen and (max-width: 768px) {
+  .content-wrapper_main .mystery-bird {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
 }
 .content-wrapper_main .answers-block {
   align-self: center;
@@ -427,7 +450,7 @@ template {
   align-items: center;
 }
 .footer .rs-logo {
-  width: 150px;
+  width: 75px;
 }
 
 .answer {
@@ -461,6 +484,7 @@ template {
 }
 .bird-types .active {
   background-color: #4fa159;
+  color: #ffffff;
   transition: 0.2s ease-in;
 }
 
@@ -499,7 +523,7 @@ template {
   margin: 0;
 }
 
-.button, .button-start,
+.button, .button-restart, .button-start,
 .button-next {
   border: none;
   border-radius: 5px;
@@ -507,12 +531,12 @@ template {
   cursor: pointer;
 }
 
-.button-active, .button-start_active,
+.button-active, .button-restart, .button-start_active,
 .button-next_active {
   background-color: #4fa159;
   color: #ffffff;
 }
-.button-active:hover, .button-start_active:hover,
+.button-active:hover, .button-restart:hover, .button-start_active:hover,
 .button-next_active:hover {
   background-color: #3e7f46;
   transition: 0.2s ease-in;
@@ -525,13 +549,17 @@ template {
 
 .mystery-bird {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: max-content 1fr;
+  grid-template-rows: repeat(2, max-content);
+  gap: 30px;
 }
 .mystery-bird .mystery-bird__image {
   display: block;
   grid-row: 1/3;
   object-fit: cover;
+}
+.mystery-bird .mystery-bird__name {
+  margin: 0;
 }
 
 .nav__item {

@@ -8,11 +8,15 @@
   &_header {
     @extend .content-wrapper;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 
     align-items: center;
 
-    
+    @media screen and (max-width: 768px) {
+      justify-content: center;
+    }
+
   }
 
   &_start-page {
@@ -34,7 +38,9 @@
     }
 
     .bird-types {
+
       &__list {
+        flex-wrap: wrap;
         justify-content: center;
       }
 
@@ -55,6 +61,11 @@
 
     .mystery-bird {
       grid-column: 1 / 3;
+
+      @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
     }
 
     .answers-block {
