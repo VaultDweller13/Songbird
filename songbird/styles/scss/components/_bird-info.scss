@@ -45,6 +45,7 @@
   }
 
   &__audio {
+    display: flex;
     grid-column: 2 / 3;
     grid-row: 3 / 4;
 
@@ -53,17 +54,26 @@
     gap: 10px;
 
     @media screen and (max-width: 768px) {
-      // width: 80%;
       text-align: center;
     }
 
     .controls {
       display: inline-block;
+      cursor: pointer;
+    }
+
+    .volume {
+      display: inline-block;
+      cursor: pointer;
     }
 
     .progress-bar-wrapper {
       display: inline-block;
     }
+  }
+
+  .hidden {
+    display: none;
   }
 
   &__description {

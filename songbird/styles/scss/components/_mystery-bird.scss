@@ -27,6 +27,23 @@
     .controls {
       align-self: flex-start;
       margin-top: 6px;
+      cursor: pointer;
+    }
+
+    .volume {
+      position: relative;
+      align-self: flex-start;
+      margin-top: 6px;
+      cursor: pointer;
+      // display: flex;
+
+      // &::before {
+      //   position: absolute;
+      //   content: '';
+      //   width: 20px;
+      //   height: 5px;
+      //   background-color: blue;
+      // }
     }
   }
 

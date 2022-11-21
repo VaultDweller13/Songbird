@@ -538,6 +538,7 @@ template {
   margin: 5px 0;
 }
 .bird-info__audio {
+  display: flex;
   grid-column: 2/3;
   grid-row: 3/4;
   width: 100%;
@@ -551,9 +552,17 @@ template {
 }
 .bird-info__audio .controls {
   display: inline-block;
+  cursor: pointer;
+}
+.bird-info__audio .volume {
+  display: inline-block;
+  cursor: pointer;
 }
 .bird-info__audio .progress-bar-wrapper {
   display: inline-block;
+}
+.bird-info .hidden {
+  display: none;
 }
 .bird-info__description {
   grid-column: 1/3;
@@ -618,6 +627,13 @@ template {
 .mystery-bird__audio .controls {
   align-self: flex-start;
   margin-top: 6px;
+  cursor: pointer;
+}
+.mystery-bird__audio .volume {
+  position: relative;
+  align-self: flex-start;
+  margin-top: 6px;
+  cursor: pointer;
 }
 
 .progress-bar-wrapper {

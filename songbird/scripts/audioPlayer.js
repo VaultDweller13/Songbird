@@ -4,6 +4,7 @@ export default class AudioPlayer {
   constructor(parent) {
     this.audio = new Audio();
     this.controlButton = parent.querySelector('.controls');
+    this.volumeButton = parent.querySelector('.volume');
     this.progressBar = parent.querySelector('.progress-bar');
     this.progressBarFiller = parent.querySelector('.progress-bar__filler');
     this.durationBlock = parent.querySelector('.duration');
@@ -15,6 +16,10 @@ export default class AudioPlayer {
 
     this.controlButton.addEventListener('click', () => {
       this.togglePlay();
+    });
+
+    this.volumeButton.addEventListener('click', () => {
+      this.toggleMute();
     });
 
     this.audio.addEventListener('ended', () => {
@@ -36,6 +41,16 @@ export default class AudioPlayer {
     this.audio.pause();
     this.audio.currentTime = 0;
     this.controlButton.setAttribute('src', './assets/images/play.svg');
+  }
+
+  toggleMute() {
+    if(this.audio.muted) {
+      this.audio.muted = false;
+      this.volumeButton.src = './assets/images/volume.svg'
+    } else {
+      this.audio.muted = true;
+      this.volumeButton.src = './assets/images/mute.svg'
+    }
   }
 
   updateProgress() {
