@@ -1,17 +1,20 @@
-import birdsData from './birds.js';
+import { birdsDataEn, birdsDataRu } from './birds.js';
 import AnswersList from './answers.js';
 import MysteryBlock from './mystery.js';
 import BirdInfo from './birdInfo.js';
+import { en, ru } from './lang.js';
 
 export default class Game {
   constructor() {
     this.startPage = document.querySelector('.content-wrapper_start-page');
+    this.heading = document.querySelector('.heading');
     this.topPanel = document.querySelector('.content-wrapper_top-panel');
     this.mainContent = document.querySelector('.content-wrapper_main');
     this.scoreBlocks = document.querySelectorAll('.score-value');
     this.maxScoreBlock = document.querySelector('.score-max');
     this.resultsBlock = document.querySelector('.content-wrapper_results');
     this.birdInfoBlock = document.querySelector('.bird-info');
+    this.birdInfoDefaultText = document.querySelector('.bird-info__text-default');
     this.mysteryBirdBlock = document.querySelector('.mystery-bird')
     this.answersListBlock = document.querySelector('.answers-block')
     this.birdTypes = document.querySelectorAll('.bird-types__item');
@@ -20,6 +23,9 @@ export default class Game {
     this.restartButton = document.querySelector('.button-restart');
     this.navStartButton = document.querySelector('.nav__start');
     this.navQuizButton = document.querySelector('.nav__quiz');
+    this.resultsTextBase = document.querySelector('.results__text_base');
+    this.resultsTextMax = document.querySelector('.results__text_max');
+    this.langButton = document.querySelector('.nav__language');
     this.currentCategory = 0;
     this.answersList = new AnswersList();
     this.mysteryBlock = new MysteryBlock();
@@ -27,12 +33,18 @@ export default class Game {
     this.mysteryBird = null;
     this.currentQuestionScore = 5;
     this.score = 0;
-    this.maxScore = birdsData.length * 5;
     this.correctSound = new Audio('./assets/sounds/correct.wav');
     this.wrongSound = new Audio('./assets/sounds/wrong.wav');
+    this.lang = localStorage.getItem('songbird-lang');
+    this.setLanguage(this.lang);
+    this.maxScore = this.birdsData.length * 5;
+
   }
 
   updateScore(score) {
+    this.scoreBlocks = document.querySelectorAll('.score-value');
+    this.maxScoreBlock = document.querySelector('.score-max');
+
     this.score += score;
     this.currentQuestionScore = 5;
     this.maxScoreBlock.textContent = this.maxScore;
@@ -79,18 +91,19 @@ export default class Game {
 
         answer.classList.add(highlightClass);
       }
-      this.birdInfo.populate(this.getPickedBird(answer.textContent));
+      this.pickedBird = this.getPickedBird(answer.textContent);
+      this.birdInfo.populate(this.pickedBird);
       this.birdInfo.show();
     });
 
     // Clicking 'Next' button
     this.nextButton.addEventListener('click', () => {
-      const notLastCategory = this.currentCategory < birdsData.length - 1;
+      const notLastCategory = this.currentCategory < this.birdsData.length - 1;
 
       if (notLastCategory) {
         this.currentCategory++;
         
-        const data = birdsData[this.currentCategory];
+        const data = this.birdsData[this.currentCategory];
 
         this.answersList.init(data);
         this.mysteryBlock.populate(data);
@@ -110,10 +123,17 @@ export default class Game {
       this.toggleResult();
       this.init();
     });
+
+    // Clicking language button 
+    this.langButton.addEventListener('click', () => {
+      this.lang = this.langButton.textContent.toLowerCase() === 'en' ? 'ru' : 'en';
+      this.langButton.textContent = this.lang.toUpperCase();
+      this.setLanguage(this.lang);
+    })
   }
 
   getPickedBird(name) {
-    const currentFamily = birdsData[this.currentCategory];
+    const currentFamily = this.birdsData[this.currentCategory];
 
     return currentFamily.find(item => item.name === name);
   }
@@ -155,7 +175,7 @@ export default class Game {
     this.score = 0;
     this.updateScore(0);
     this.currentCategory = 0;
-    const data = birdsData[this.currentCategory];
+    const data = this.birdsData[this.currentCategory];
     this.mysteryBlock.populate(data)
     this.answersList.init(data);
     this.birdInfo.hide();
@@ -165,7 +185,34 @@ export default class Game {
   }
 
   start() {
+    this.setLanguage(this.lang);
     this.init()
     this.setListener();
+  }
+
+  setLanguage(language) {
+    if (language) this.langButton.textContent = language.toUpperCase();
+
+    this.birdsData = language === 'en' ? birdsDataEn : birdsDataRu;
+    const lang = language === 'en' ? en : ru;
+    this.navStartButton.textContent = lang.navStart;
+    this.navQuizButton.textContent = lang.navQuiz;
+    this.heading.textContent = lang.heading;
+    this.startButton.textContent = lang.buttonStart;
+    this.birdInfoDefaultText.textContent = lang.birdInfoDefault;
+    this.nextButton.textContent = lang.buttonNext;
+    this.resultsTextMax.textContent = lang.maxScore;
+    this.resultsTextBase.innerHTML = lang.baseScore;
+    this.restartButton.textContent = lang.buttonRestart;
+    this.birdTypes.forEach((type, index) => type.textContent = lang.categories[index]);
+    if (this.pickedBird) this.birdInfo.populate(this.birdsData[this.currentCategory][this.pickedBird.id - 1]);
+    if (this.mysteryBlock.mysteryBird) {
+      this.mysteryBlock.mysteryBird = this.birdsData[this.currentCategory][this.mysteryBlock.mysteryBird.id - 1];
+      this.mysteryBlock.showName();
+    }
+    const answers = document.querySelectorAll('.answer');
+    answers.forEach((answer, index) => answer.textContent = this.birdsData[this.currentCategory][index].name);
+
+    localStorage.setItem('songbird-lang', language);
   }
 }
