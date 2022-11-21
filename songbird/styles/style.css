@@ -570,6 +570,10 @@ template {
   align-items: center;
   gap: 10px;
 }
+.mystery-bird .mystery-bird__audio .controls {
+  align-self: flex-start;
+  margin-top: 6px;
+}
 
 .progress-bar-wrapper {
   width: 100%;
@@ -582,6 +586,14 @@ template {
 }
 .progress-bar-wrapper .progress-bar__filler {
   background-color: #4fa159;
+  width: 0;
+  height: 100%;
+}
+.progress-bar-wrapper .time-info {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
 }
 
 .nav__item {

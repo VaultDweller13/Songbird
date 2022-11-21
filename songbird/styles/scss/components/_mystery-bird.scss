@@ -18,6 +18,11 @@
     display: flex;
     align-items: center;
     gap: 10px;
+
+    .controls {
+      align-self: flex-start;
+      margin-top: 6px;
+    }
   }
 
 }

@@ -1,17 +1,24 @@
+import { formatTime } from './utils.js';
+
 export default class AudioPlayer {
   constructor(parent) {
     this.audio = new Audio();
     this.controlButton = parent.querySelector('.controls');
     this.progressBar = document.querySelector('progress-bar');
+    this.progressBarFiller = document.querySelector('.progress-bar__filler');
     this.durationBlock = parent.querySelector('.duration');
     this.currentTimeBlock = parent.querySelector('.current-time');
 
     this.audio.addEventListener('loadedmetadata', () => {
-      this.durationBlock.textContent = this.audio.duration
+      this.durationBlock.textContent = formatTime(this.audio.duration);
     });
 
     this.controlButton.addEventListener('click', () => {
       this.togglePlay();
+    });
+
+    this.audio.addEventListener('ended', () => {
+      this.controlButton.setAttribute('src', './assets/images/play.svg');
     });
   }
 
@@ -30,10 +37,20 @@ export default class AudioPlayer {
     this.audio.currentTime = 0;
     this.controlButton.setAttribute('src', './assets/images/play.svg');
   }
+
+  updateProgress() {
+    const time = Math.floor(this.audio.currentTime / this.audio.duration * 100);
+    console.log(time);
+    this.progressBarFiller.style.width = `${time}%`;
+    this.currentTimeBlock.textContent = formatTime(this.audio.currentTime); 
+
+    setTimeout(() => this.updateProgress(), 1000);
+  }
   
   init(src) {
     this.controlButton.setAttribute('src', './assets/images/play.svg');
     this.audio.src = src;
-    this.currentTimeBlock.textContent = this.audio.currentTime;
+    this.currentTimeBlock.textContent = formatTime(this.audio.currentTime);
+    this.updateProgress();
   }
 }
