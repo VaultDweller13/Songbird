@@ -420,6 +420,11 @@ template {
   gap: 15px;
   height: 100%;
 }
+@media screen and (max-width: 768px) {
+  .content-wrapper_main {
+    display: block;
+  }
+}
 .content-wrapper_main .mystery-bird {
   grid-column: 1/3;
 }
@@ -499,32 +504,60 @@ template {
   align-content: center;
   gap: 20px;
 }
-.bird-info .bird-info__text-default {
+@media screen and (max-width: 1200px) {
+  .bird-info {
+    display: block;
+  }
+}
+@media screen and (max-width: 768px) {
+  .bird-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+}
+.bird-info__text-default {
   grid-column: 1/3;
   text-align: center;
 }
-.bird-info .bird-info__image {
+.bird-info__image {
   width: 200px;
   height: 155px;
   object-fit: cover;
   grid-row: 1/4;
 }
-.bird-info .bird-info__name {
+.bird-info__name {
   grid-row: 1/2;
   padding: 0;
-  margin: 0;
+  margin: 5px 0;
 }
-.bird-info .bird-info__name-latin {
+.bird-info__name-latin {
   grid-row: 2/3;
   padding: 0;
-  margin: 0;
+  margin: 5px 0;
 }
-.bird-info .bird-info__audio {
+.bird-info__audio {
+  grid-column: 2/3;
   grid-row: 3/4;
+  width: 100%;
+  align-items: flex-end;
+  gap: 10px;
 }
-.bird-info .bird-info__description {
+@media screen and (max-width: 768px) {
+  .bird-info__audio {
+    text-align: center;
+  }
+}
+.bird-info__audio .controls {
+  display: inline-block;
+}
+.bird-info__audio .progress-bar-wrapper {
+  display: inline-block;
+}
+.bird-info__description {
   grid-column: 1/3;
-  margin: 0;
+  margin: 10px 0;
 }
 
 .button, .button-restart, .button-start,
@@ -550,6 +583,12 @@ template {
   justify-self: center;
   align-self: start;
 }
+@media screen and (max-width: 768px) {
+  .button-next {
+    display: block;
+    margin: 0 auto;
+  }
+}
 
 .mystery-bird {
   display: grid;
@@ -557,29 +596,40 @@ template {
   grid-template-rows: repeat(2, max-content);
   column-gap: 30px;
 }
-.mystery-bird .mystery-bird__image {
+.mystery-bird__image {
   display: block;
   grid-row: 1/3;
   object-fit: cover;
 }
-.mystery-bird .mystery-bird__name {
+.mystery-bird__name {
   margin: 0;
 }
-.mystery-bird .mystery-bird__audio {
+.mystery-bird__audio {
   display: flex;
+  width: 100%;
   align-items: center;
   gap: 10px;
 }
-.mystery-bird .mystery-bird__audio .controls {
+@media screen and (max-width: 768px) {
+  .mystery-bird__audio {
+    justify-content: center;
+  }
+}
+.mystery-bird__audio .controls {
   align-self: flex-start;
   margin-top: 6px;
 }
 
 .progress-bar-wrapper {
-  width: 100%;
+  width: 70%;
+}
+@media screen and (max-width: 768px) {
+  .progress-bar-wrapper {
+    align-self: flex-end;
+  }
 }
 .progress-bar-wrapper .progress-bar {
-  width: 70%;
+  width: 100%;
   height: 5px;
   border-radius: 5px;
   background-color: #ebebeb;
@@ -590,10 +640,10 @@ template {
   height: 100%;
 }
 .progress-bar-wrapper .time-info {
-  width: 70%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 5px 0;
+  padding-top: 5px;
 }
 
 .nav__item {
@@ -601,6 +651,7 @@ template {
 }
 .nav__item:hover {
   background-color: #ebebeb;
+  color: #ffffff;
   cursor: pointer;
 }
 

@@ -1,3 +1,5 @@
+import AudioPlayer from "./audioPlayer.js";
+
 export default class BirdInfo {
   constructor() {
     this.parent = document.querySelector('.bird-info');
@@ -14,15 +16,15 @@ export default class BirdInfo {
     
     this.nameLatin = document.createElement('p');
     this.nameLatin.classList.add('bird-info__name-latin', 'hidden');
-
-    this.player = new Audio();
-    this.player.classList.add('bird-info__audio', 'hidden');
-    this.player.setAttribute('controls', '');
+   
+    this.playerContainer = document.querySelector('.bird-info__audio');
+    this.playerContainer.classList.add('bird-info__audio', 'hidden');
+    this.player = new AudioPlayer(this.playerContainer);
 
     this.description = document.createElement('p');
     this.description.classList.add('bird-info__description', 'hidden');
     
-    this.parent.append(this.image, this.name, this.nameLatin, this.player, this.description);
+    this.parent.append(this.image, this.name, this.nameLatin, this.playerContainer, this.description);
   }
 
   populate(bird) {
@@ -31,7 +33,7 @@ export default class BirdInfo {
     this.image.src = this.bird.image;
     this.name.textContent = this.bird.name;
     this.nameLatin.textContent = this.bird.species;
-    this.player.src = this.bird.audio;
+    this.player.init(this.bird.audio);
     this.description.textContent = this.bird.description;
   }
 

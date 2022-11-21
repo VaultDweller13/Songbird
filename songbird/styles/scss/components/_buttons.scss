@@ -27,6 +27,11 @@
 .button-next {
   justify-self: center;
   align-self: start;
+
+  @media screen and (max-width: 768px) {
+    display: block;
+    margin: 0 auto;
+  }
 }
 
 .button-restart {

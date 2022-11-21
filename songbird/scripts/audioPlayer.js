@@ -4,8 +4,8 @@ export default class AudioPlayer {
   constructor(parent) {
     this.audio = new Audio();
     this.controlButton = parent.querySelector('.controls');
-    this.progressBar = document.querySelector('progress-bar');
-    this.progressBarFiller = document.querySelector('.progress-bar__filler');
+    this.progressBar = parent.querySelector('.progress-bar');
+    this.progressBarFiller = parent.querySelector('.progress-bar__filler');
     this.durationBlock = parent.querySelector('.duration');
     this.currentTimeBlock = parent.querySelector('.current-time');
 
@@ -40,11 +40,11 @@ export default class AudioPlayer {
 
   updateProgress() {
     const time = Math.floor(this.audio.currentTime / this.audio.duration * 100);
-    console.log(time);
     this.progressBarFiller.style.width = `${time}%`;
     this.currentTimeBlock.textContent = formatTime(this.audio.currentTime); 
 
-    setTimeout(() => this.updateProgress(), 1000);
+
+    setTimeout(() => this.updateProgress(), 100);
   }
   
   init(src) {

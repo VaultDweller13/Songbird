@@ -59,6 +59,10 @@
 
     height: 100%;
 
+    @media screen and (max-width: 768px) {
+      display: block;
+    }
+
     .mystery-bird {
       grid-column: 1 / 3;
 
