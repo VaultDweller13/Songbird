@@ -40,10 +40,10 @@ export default class Game {
     this.correctSound = new Audio('./assets/sounds/correct.wav');
     this.wrongSound = new Audio('./assets/sounds/wrong.wav');
     this.lang = localStorage.getItem('songbird-lang');
+    this.gallery.init();
     this.setLanguage(this.lang);
     this.maxScore = this.birdsData.length * 5;
 
-    this.gallery.init();
   }
 
   updateScore(score) {
@@ -185,7 +185,6 @@ export default class Game {
     this.startPage.classList.add('hidden');
     this.resultsBlock.classList.add('hidden');
     this.galleryPage.classList.add('hidden');
-
   }
 
   higlightCurrentCategory() {
@@ -221,6 +220,7 @@ export default class Game {
     this.navQuizButton.textContent = lang.navQuiz;
     this.heading.textContent = lang.heading;
     this.startButton.textContent = lang.buttonStart;
+    this.navGalleryButton.textContent = lang.buttonGallery;
     this.birdInfoDefaultText.textContent = lang.birdInfoDefault;
     this.nextButton.textContent = lang.buttonNext;
     this.resultsTextMax.textContent = lang.maxScore;
@@ -235,6 +235,7 @@ export default class Game {
     const answers = document.querySelectorAll('.answer');
     answers.forEach((answer, index) => answer.textContent = this.birdsData[this.currentCategory][index].name);
 
+    this.gallery.setLanguage(this.lang);
     localStorage.setItem('songbird-lang', language);
   }
 }

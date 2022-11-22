@@ -1,4 +1,9 @@
 .nav {
+
+  &__list {
+    flex-wrap: wrap;
+  }
+  
   &__item {
     padding: 5px 10px;
   }

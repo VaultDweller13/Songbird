@@ -1,3 +1,9 @@
+.img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .gallery__image {
   width: 80%;
 }
@@ -18,4 +24,17 @@
 .gallery__description {
   width: 80%;
   text-align: center;
+}
+
+.gallery__prev,
+.gallery__next {
+  width: 48px;
+  height: 48px;
+
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.2);
+    transition: 0.2s ease-in;
+  }
 }

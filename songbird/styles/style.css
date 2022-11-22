@@ -15,7 +15,7 @@ body {
     font-size: 16px;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 798px) {
   body {
     font-size: 14px;
   }
@@ -619,6 +619,12 @@ template {
   }
 }
 
+.img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .gallery__image {
   width: 80%;
 }
@@ -638,6 +644,18 @@ template {
 .gallery__description {
   width: 80%;
   text-align: center;
+}
+
+.gallery__prev,
+.gallery__next {
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+}
+.gallery__prev:hover,
+.gallery__next:hover {
+  transform: scale(1.2);
+  transition: 0.2s ease-in;
 }
 
 .mystery-bird {
@@ -703,6 +721,9 @@ template {
   padding-top: 5px;
 }
 
+.nav__list {
+  flex-wrap: wrap;
+}
 .nav__item {
   padding: 5px 10px;
 }
