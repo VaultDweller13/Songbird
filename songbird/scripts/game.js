@@ -230,7 +230,7 @@ export default class Game {
     if (this.pickedBird) this.birdInfo.populate(this.birdsData[this.currentCategory][this.pickedBird.id - 1]);
     if (this.mysteryBlock.mysteryBird) {
       this.mysteryBlock.mysteryBird = this.birdsData[this.currentCategory][this.mysteryBlock.mysteryBird.id - 1];
-      this.mysteryBlock.showName();
+      if (this.mysteryBlock.nameBlock.textContent !== '***') this.mysteryBlock.showName();
     }
     const answers = document.querySelectorAll('.answer');
     answers.forEach((answer, index) => answer.textContent = this.birdsData[this.currentCategory][index].name);
