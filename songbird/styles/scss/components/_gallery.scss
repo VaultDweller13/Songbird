@@ -1,0 +1,21 @@
+.gallery__image {
+  width: 80%;
+}
+
+.gallery__audio {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .progress-bar-wrapper {
+    align-self: flex-end;
+    width: 45%;
+    margin: 0 10px;
+  }
+}
+
+.gallery__description {
+  width: 80%;
+  text-align: center;
+}

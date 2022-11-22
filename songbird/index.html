@@ -17,6 +17,7 @@
           <ul class="nav__list list_unmarked_flat">
             <li class="nav__item nav__start">Начальная страница</li>
             <li class="nav__item nav__quiz">Викторина</li>
+            <li class="nav__item nav__gallery">Галерея</li>
             <li class="nav__item nav__language">RU</li>
           </ul>
         </nav>
@@ -83,6 +84,21 @@
           <p class="results__text_base hidden">Поздравляем! Вы прошли викторину и набрали <span class="score-value"></span> из <span class="score-max"></span> возможных баллов!</p>
           <button class="button-restart">Попробовать еще раз?</button>
         </section>
+      </div>
+      <div class="content-wrapper_gallery hidden">
+        <div class="gallery__audio">
+          <img class="controls" src="./assets/images/play.svg" alt="Play/Pause button" width="48" height="48">
+          <div class="progress-bar-wrapper">
+            <div class="progress-bar">
+              <div class="progress-bar__filler"></div>
+            </div>
+            <div class="time-info">
+              <span class="current-time"></span>
+              <span class="duration"></span>
+            </div>
+          </div>
+          <img class="volume" src="./assets/images/volume.svg" alt="Volume button" width="48" height="48">
+        </div>
       </div>
     </main>
     <footer class="footer">

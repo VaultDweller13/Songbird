@@ -52,6 +52,7 @@
 
   &_main {
     @extend .content-wrapper;
+    flex: 1 1 auto; 
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(3, max-content);
@@ -81,6 +82,16 @@
     @extend .content-wrapper;
     height: 100%;
     text-align: center;
+  }
+
+  &_gallery {
+    @extend .content-wrapper;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
   }
 
   &_footer {
