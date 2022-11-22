@@ -8,6 +8,7 @@ export default class MysteryBlock {
 
   getMysteryBird() {
     const num = Math.floor(Math.random() * this.data.length);
+    console.log(`Верный ответ: ${this.data[num].name}`);
     return this.data[num];
   }
 
