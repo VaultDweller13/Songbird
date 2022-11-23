@@ -9,6 +9,9 @@ export default class AudioPlayer {
     this.progressBarFiller = parent.querySelector('.progress-bar__filler');
     this.durationBlock = parent.querySelector('.duration');
     this.currentTimeBlock = parent.querySelector('.current-time');
+    this.volumeSlider = parent.querySelector('.volume-slider');
+    this.volumeSliderScaleContainer = parent.querySelector('.slider-scale-container');
+    this.volumeSliderScale = parent.querySelector('.slider-scale');
 
     this.audio.addEventListener('loadedmetadata', () => {
       this.durationBlock.textContent = formatTime(this.audio.duration);
@@ -24,6 +27,11 @@ export default class AudioPlayer {
 
     this.audio.addEventListener('ended', () => {
       this.controlButton.setAttribute('src', './assets/images/play.svg');
+    });
+
+    this.volumeSlider.addEventListener('click', (e) => {
+      console.log(e.offsetX);
+      this.volumeSliderScale.style.width = `${100 - e.offsetX}%`;
     });
   }
 

@@ -20,16 +20,35 @@
 
     width: calc(var(--width-flag) * 100px);
     height: 50px;
+    padding-left: 10px;
+
     background-color: $color-content;
     transition: 0.5s ease-out;
 
-    .slider-scale {
-      width: 80%;
-      height: 5px;
+    // border: 1px solid red;
+
+    .slider-scale-container {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 9px;
       margin-left: auto;
 
+      pointer-events: none;
+      border: 1px solid $color-active;
       border-radius: 5px;
-      background-color: $color-active;
+
+      .slider-scale {
+        width: 80%;
+        height: 5px;
+        margin-left: auto;
+        margin-right: 1px;
+
+        border-radius: 5px;
+        
+        background-color: $color-active;
+        pointer-events: none;
+      }
     }
   }
 }

@@ -750,15 +750,28 @@ template {
   align-items: center;
   width: calc(var(--width-flag) * 100px);
   height: 50px;
+  padding-left: 10px;
   background-color: #ffffff;
   transition: 0.5s ease-out;
 }
-.volume-container .volume-slider .slider-scale {
+.volume-container .volume-slider .slider-scale-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 9px;
+  margin-left: auto;
+  pointer-events: none;
+  border: 1px solid #4fa159;
+  border-radius: 5px;
+}
+.volume-container .volume-slider .slider-scale-container .slider-scale {
   width: 80%;
   height: 5px;
   margin-left: auto;
+  margin-right: 1px;
   border-radius: 5px;
   background-color: #4fa159;
+  pointer-events: none;
 }
 
 /*# sourceMappingURL=style.css.map */
