@@ -21,17 +21,23 @@ export default class AudioPlayer {
       this.togglePlay();
     });
 
-    this.volumeButton.addEventListener('click', () => {
-      this.toggleMute();
-    });
+    // this.volumeButton.addEventListener('click', () => {
+    //   this.toggleMute();
+    // });
 
     this.audio.addEventListener('ended', () => {
       this.controlButton.setAttribute('src', './assets/images/play.svg');
     });
 
     this.volumeSlider.addEventListener('click', (e) => {
-      console.log(e.offsetX);
-      this.volumeSliderScale.style.width = `${100 - e.offsetX}%`;
+      let volume = (100 + 5 - e.offsetX);
+      volume = volume < 6 ? 0 : volume > 94 ? 100 : volume;
+      this.volumeSliderScale.style.width = `${volume}%`;
+      this.audio.volume = volume / 100;
+
+      if (this.audio.volume === 0) {
+        this.volumeButton.src = './assets/images/mute.svg';
+      } else this.volumeButton.src = './assets/images/volume.svg';
     });
   }
 
