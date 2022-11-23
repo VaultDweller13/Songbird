@@ -121,6 +121,7 @@ export default class Game {
       }
 
       this.birdInfo.hide();
+      this.birdInfo.player.stop();
     });
 
     // Clicking 'Try again button'
