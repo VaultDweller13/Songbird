@@ -21,9 +21,9 @@ export default class AudioPlayer {
       this.togglePlay();
     });
 
-    // this.volumeButton.addEventListener('click', () => {
-    //   this.toggleMute();
-    // });
+    this.volumeButton.addEventListener('click', () => {
+      this.toggleMute();
+    });
 
     this.audio.addEventListener('ended', () => {
       this.controlButton.setAttribute('src', './assets/images/play.svg');
@@ -37,7 +37,10 @@ export default class AudioPlayer {
 
       if (this.audio.volume === 0) {
         this.volumeButton.src = './assets/images/mute.svg';
-      } else this.volumeButton.src = './assets/images/volume.svg';
+      } else {
+        this.volumeButton.src = './assets/images/volume.svg';
+        this.audio.muted = false;
+      }
     });
   }
 
