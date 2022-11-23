@@ -688,11 +688,9 @@ template {
   margin-top: 6px;
   cursor: pointer;
 }
-.mystery-bird__audio .volume {
-  position: relative;
+.mystery-bird__audio .volume-container {
   align-self: flex-start;
-  margin-top: 6px;
-  cursor: pointer;
+  margin-top: 8px;
 }
 
 .progress-bar-wrapper {
@@ -713,6 +711,7 @@ template {
   background-color: #4fa159;
   width: 0;
   height: 100%;
+  border-radius: 5px;
 }
 .progress-bar-wrapper .time-info {
   width: 100%;
@@ -731,6 +730,35 @@ template {
   background-color: #ebebeb;
   color: #ffffff;
   cursor: pointer;
+}
+
+.volume-container {
+  --width-flag: 0;
+  position: relative;
+  display: flex;
+  cursor: pointer;
+}
+.volume-container:hover {
+  --width-flag: 1;
+}
+.volume-container .volume-slider {
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  width: calc(var(--width-flag) * 100px);
+  height: 50px;
+  background-color: #ffffff;
+  transition: 0.5s ease-out;
+}
+.volume-container .volume-slider .slider-scale {
+  width: 80%;
+  height: 5px;
+  margin-left: auto;
+  border-radius: 5px;
+  background-color: #4fa159;
 }
 
 /*# sourceMappingURL=style.css.map */

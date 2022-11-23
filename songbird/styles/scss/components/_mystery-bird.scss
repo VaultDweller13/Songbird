@@ -30,20 +30,9 @@
       cursor: pointer;
     }
 
-    .volume {
-      position: relative;
+    .volume-container {
       align-self: flex-start;
-      margin-top: 6px;
-      cursor: pointer;
-      // display: flex;
-
-      // &::before {
-      //   position: absolute;
-      //   content: '';
-      //   width: 20px;
-      //   height: 5px;
-      //   background-color: blue;
-      // }
+      margin-top: 8px;
     }
   }
 
