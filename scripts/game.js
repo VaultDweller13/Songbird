@@ -39,7 +39,7 @@ export default class Game {
     this.score = 0;
     this.correctSound = new Audio('./assets/sounds/correct.wav');
     this.wrongSound = new Audio('./assets/sounds/wrong.wav');
-    this.lang = localStorage.getItem('songbird-lang');
+    this.lang = localStorage.getItem('songbird-lang') || 'ru';
     this.gallery.init();
     this.setLanguage(this.lang);
     this.maxScore = this.birdsData.length * 5;
